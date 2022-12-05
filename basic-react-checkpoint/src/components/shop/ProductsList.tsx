@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Product from "./Product";
 
 const ProductsList = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -30,11 +31,12 @@ const ProductsList = () => {
   return (
     <div>
       {products?.map((product: any) => (
-        <div key={product.id}>
-          <img src={product.image} alt="" />
-          <h3>{product.title}</h3>
-          <p>{product.price}</p>
-        </div>
+        <Product
+          key={product.id}
+          image={product.image}
+          title={product.title}
+          price={product.price}
+        />
       ))}
     </div>
   );

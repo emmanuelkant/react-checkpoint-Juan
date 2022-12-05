@@ -1,12 +1,16 @@
 import React from "react";
+import "./Product.css";
 
-const Product = () => {
+const Product: React.FC<{ image: string; title: string; price: string }> = (
+  props
+) => {
+  console.log(props);
   return (
-    <>
-      <img src="" alt="" />
-      <h3></h3>
-      <p></p>
-    </>
+    <div className="product">
+      <img src={props.image} alt="" className="product-image" />
+      <h3>{props.title}</h3>
+      <p>Price €{props.price}</p>
+    </div>
   );
 };
 
