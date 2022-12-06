@@ -1,8 +1,14 @@
+$color-grey: grey;
 .product {
   display: flex;
   flex-direction: column;
+  background-color: $color-grey;
 }
 
 .product-image {
   width: 10%;
+}
+
+.product-button {
+  display: flex;
 }

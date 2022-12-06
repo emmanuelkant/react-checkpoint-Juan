@@ -1,7 +1,12 @@
-import React from "react";
+import { configureStore } from "@reduxjs/toolkit";
+import cartSlice from "./cart-slice";
+import uiSlice from "./ui-slice";
 
-const index = () => {
-  return <div>index</div>;
-};
+const store = configureStore({
+  reducer: { ui: uiSlice.reducer, cart: cartSlice.reducer },
+});
 
-export default index;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export default store;

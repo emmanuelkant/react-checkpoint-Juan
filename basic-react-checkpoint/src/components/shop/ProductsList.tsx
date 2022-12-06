@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Items } from "../../Models/Items";
 import Product from "./Product";
+import "./ProductsList.scss";
 
 const ProductsList = () => {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Items[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://fakestoreapi.com/products?limit=5");
+      const response = await fetch("https://fakestoreapi.com/products?limit=6");
       if (!response.ok) {
         throw new Error("Something went wrong :(");
       }
 
       const responseData = await response.json();
-      const productsList: any[] = [];
+      const productsList: Items[] = [];
 
       for (const key in responseData) {
         productsList.push({
@@ -20,6 +22,8 @@ const ProductsList = () => {
           title: responseData[key].title,
           image: responseData[key].image,
           price: responseData[key].price,
+          quantity: null,
+          totalPrice: undefined,
         });
       }
 
@@ -29,16 +33,21 @@ const ProductsList = () => {
   }, []);
 
   return (
-    <div>
-      {products?.map((product: any) => (
-        <Product
-          key={product.id}
-          image={product.image}
-          title={product.title}
-          price={product.price}
-        />
-      ))}
-    </div>
+    <>
+      <div className="plp-container">
+        {products?.map((product: Items) => (
+          <Product
+            key={product.id}
+            id={product.id}
+            image={product.image}
+            title={product.title}
+            price={product.price}
+            quantity={null}
+            totalPrice={undefined}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
