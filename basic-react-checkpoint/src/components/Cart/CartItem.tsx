@@ -1,6 +1,7 @@
 import React from "react";
 import { cartActions } from "../../store/cart-slice";
 import { useAppDispatch } from "../Hooks/redux-hooks";
+import Item from "../UI/Item";
 
 const CartItem: React.FC<{
   item: {
@@ -37,24 +38,34 @@ const CartItem: React.FC<{
   };
 
   return (
-    <li>
-      <header>
-        <h3>{title}</h3>
-        <div>
-          ${total.toFixed(2)} <span>(${price}/item)</span>
-        </div>
-      </header>
-      <div>
-        <div>
-          x <span>{quantity}</span>
-        </div>
-        <div>
-          <button onClick={removeItemHandler}>-</button>
-          <button onClick={addItemHandler}>+</button>
-          <button onClick={clearCartHandler}>Clear</button>
-        </div>
-      </div>
-    </li>
+    <Item
+      id={id}
+      title={title}
+      price={price}
+      total={total}
+      quantity={quantity}
+      onAddItem={addItemHandler}
+      onRemoveItem={removeItemHandler}
+      onClear={clearCartHandler}
+    />
+    // <li>
+    //   <header>
+    //     <h3>{title}</h3>
+    //     <div>
+    //       ${total.toFixed(2)} <span>(${price}/item)</span>
+    //     </div>
+    //   </header>
+    //   <div>
+    //     <div>
+    //       x <span>{quantity}</span>
+    //     </div>
+    //     <div>
+    //       <button onClick={removeItemHandler}>-</button>
+    //       <button onClick={addItemHandler}>+</button>
+    //       <button onClick={clearCartHandler}>Clear</button>
+    //     </div>
+    //   </div>
+    // </li>
   );
 };
 

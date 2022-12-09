@@ -38,3 +38,14 @@ export type ShortCartItem = {
   items: Items[];
   totalQuantity: number;
 };
+
+export type ItemProps = {
+  id: string;
+  title: string;
+  quantity: number;
+  total: number;
+  price: number;
+  onRemoveItem: () => void;
+  onAddItem: () => void;
+  onClear: () => void;
+};
