@@ -1,9 +1,40 @@
 import React from "react";
+import { cartActions } from "../../store/cart-slice";
+import { useAppDispatch } from "../Hooks/redux-hooks";
 
 const CartItem: React.FC<{
-  item: { title: string; quantity: number; total: number; price: string };
+  item: {
+    id: string;
+    title: string;
+    quantity: number;
+    total: number;
+    price: number;
+  };
 }> = (props) => {
-  const { title, quantity, total, price } = props.item;
+  const dispatch = useAppDispatch();
+
+  const { id, title, quantity, total, price } = props.item;
+
+  const clearCartHandler = () => {
+    dispatch(cartActions.clearCart());
+  };
+
+  const removeItemHandler = () => {
+    dispatch(cartActions.removeItemFromCart(id));
+  };
+
+  const addItemHandler = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id,
+        title,
+        price,
+        image: "",
+        quantity: 1,
+        totalPrice: price,
+      })
+    );
+  };
 
   return (
     <li>
@@ -18,8 +49,9 @@ const CartItem: React.FC<{
           x <span>{quantity}</span>
         </div>
         <div>
-          <button>-</button>
-          <button>+</button>
+          <button onClick={removeItemHandler}>-</button>
+          <button onClick={addItemHandler}>+</button>
+          <button onClick={clearCartHandler}>Clear</button>
         </div>
       </div>
     </li>

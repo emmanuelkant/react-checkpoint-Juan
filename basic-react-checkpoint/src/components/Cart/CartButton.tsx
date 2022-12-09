@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../Hooks/redux-hooks";
 import { uiActions } from "../../store/ui-slice";
 
 const CartButton = () => {
@@ -8,7 +8,7 @@ const CartButton = () => {
   const toggleCartHandler = () => {
     dispatch(uiActions.toggle());
   };
-  console.log(cartQuantity);
+
   return (
     <button onClick={toggleCartHandler}>
       <span>My Cart</span>

@@ -1,6 +1,7 @@
 import React from "react";
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../Hooks/redux-hooks";
 import CartItem from "./CartItem";
+import { Items } from "../../Models/types";
 
 const Cart: React.FC = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -8,9 +9,11 @@ const Cart: React.FC = () => {
     <>
       <h2>Your Shopping Cart</h2>
       <ul>
-        {cartItems.map((item: any) => (
+        {cartItems.map((item: Items) => (
           <CartItem
+            key={item.id}
             item={{
+              id: item.id,
               title: item.title,
               quantity: item.quantity,
               total: item.totalPrice,

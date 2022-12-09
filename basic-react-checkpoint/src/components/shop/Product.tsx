@@ -1,10 +1,10 @@
 import React from "react";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
 import "./Product.scss";
-import { Items } from "../../Models/Items";
+import { ListItems } from "../../Models/types";
 
-const Product: React.FC<Items> = (props) => {
+const Product: React.FC<ListItems> = (props) => {
   const dispatch = useAppDispatch();
 
   const { id, title, price, image } = props;
