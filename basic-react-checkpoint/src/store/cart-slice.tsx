@@ -36,6 +36,7 @@ const cartSlice = createSlice({
           quantity: 1,
           totalPrice: newItem.price,
           image: newItem.image,
+          isWish: newItem.isWish,
         });
       } else {
         existingItem.quantity!++;
@@ -63,6 +64,5 @@ const cartSlice = createSlice({
 });
 
 export const cartActions = cartSlice.actions;
-export const cartReducers = cartSlice.caseReducers;
 
 export default cartSlice;

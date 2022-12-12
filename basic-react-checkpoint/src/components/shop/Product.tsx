@@ -3,12 +3,13 @@ import { useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
 import "./Product.scss";
 import { ListItems } from "../../Models/types";
+import { wishActions } from "../../store/wishList-slice";
 
-const Product: React.FC<ListItems> = (props) => {
+const Product: React.FC<any> = (props) => {
   const dispatch = useAppDispatch();
 
-  const { id, title, price, image } = props;
-
+  const { id, title, price, image, isWished } = props;
+  console.log(isWished);
   const addToCartHandler = () => {
     dispatch(
       cartActions.addItemToCart({
@@ -18,8 +19,27 @@ const Product: React.FC<ListItems> = (props) => {
         image,
         quantity: 1,
         totalPrice: price,
+        isWish: false,
       })
     );
+  };
+
+  const addWishHandler = () => {
+    dispatch(
+      wishActions.addToWishList({
+        id,
+        title,
+        price,
+        image,
+        quantity: 1,
+        totalPrice: price,
+        isWish: true,
+      })
+    );
+  };
+
+  const removeWishHandler = () => {
+    dispatch(wishActions.removeFromWishList(id));
   };
 
   return (
@@ -28,8 +48,15 @@ const Product: React.FC<ListItems> = (props) => {
       <h3>{title}</h3>
       <p>Price €{price}</p>
       <div className="product-button">
-        <button onClick={addToCartHandler}>Add</button>
-        <button>Remove</button>
+        <button onClick={addToCartHandler}>Add to Cart</button>
+      </div>
+      <div className="product-button">
+        {!isWished && (
+          <button onClick={addWishHandler}>Add to wish list</button>
+        )}
+        {isWished && (
+          <button onClick={removeWishHandler}>Remove from wish list</button>
+        )}
       </div>
     </div>
   );

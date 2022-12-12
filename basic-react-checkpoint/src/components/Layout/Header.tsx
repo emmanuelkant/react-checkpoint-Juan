@@ -1,5 +1,6 @@
 import React from "react";
 import CartButton from "../Cart/CartButton";
+import WishListButton from "../WishList/WishListButton";
 
 const Header = () => {
   return (
@@ -9,6 +10,7 @@ const Header = () => {
         <ul>
           <li>
             <CartButton />
+            <WishListButton />
           </li>
         </ul>
       </nav>

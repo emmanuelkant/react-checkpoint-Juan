@@ -1,5 +1,3 @@
-import { InitialState } from "../store/cart-slice";
-
 export type Items = {
   id: string;
   image: string;
@@ -7,6 +5,7 @@ export type Items = {
   price: number;
   quantity: number;
   totalPrice: number;
+  isWish: boolean;
 };
 
 export type ListItems = {
@@ -14,6 +13,7 @@ export type ListItems = {
   image: string;
   title: string;
   price: number;
+  isWish: boolean;
 };
 
 export type CartItems = {
@@ -26,6 +26,19 @@ export type CartItems = {
   totalPrice: number;
   totalQuantity: number;
   changed: boolean;
+};
+
+export type WishItems = {
+  id: string;
+  items: Items[];
+  image: string;
+  title: string;
+  price: number;
+  quantity: number;
+  totalPrice: number;
+  totalQuantity: number;
+  changed: boolean;
+  isWish: boolean;
 };
 
 export type Notif = {
@@ -42,10 +55,18 @@ export type ShortCartItem = {
 export type ItemProps = {
   id: string;
   title: string;
+  image: string;
   quantity: number;
   total: number;
   price: number;
   onRemoveItem: () => void;
   onAddItem: () => void;
-  onClear: () => void;
+};
+
+export type TApiResponse = {
+  status: Number;
+  statusText: String;
+  data: any;
+  error: any;
+  loading: Boolean;
 };

@@ -3,11 +3,13 @@ import { Notif } from "../Models/types";
 
 type InitialState = {
   showCart: boolean;
+  showWishList: boolean;
   notification: null | Notif;
 };
 
 const initialState: InitialState = {
   showCart: false,
+  showWishList: false,
   notification: null,
 };
 
@@ -17,6 +19,9 @@ const uiSlice = createSlice({
   reducers: {
     toggle(state) {
       state.showCart = !state.showCart;
+    },
+    toggleWish(state) {
+      state.showWishList = !state.showWishList;
     },
     showNotification(state, action: PayloadAction<Notif>) {
       state.notification = {

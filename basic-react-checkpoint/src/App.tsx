@@ -5,24 +5,30 @@ import Notification from "./components/UI/Notification";
 import ProductsList from "./components/Shop/ProductsList";
 import { useEffect } from "react";
 import { getCartData, sendCartData } from "./store/cart-actions";
+import WishList from "./components/WishList/WishList";
+import { getWishListData, sendWishListData } from "./store/wishList-actions";
 
-let isInitial = true;
+let isCartInitial = true;
+let isWishInitial = true;
 
 const App = () => {
   const dispatch = useAppDispatch();
   const showCart = useAppSelector((state) => state.ui.showCart);
+  const showWishList = useAppSelector((state) => state.ui.showWishList);
   //CHANGE TYPES!
   const cart: any = useAppSelector((state) => state.cart);
+  const wishList: any = useAppSelector((state) => state.wish);
 
   const notification = useAppSelector((state) => state.ui.notification);
 
   useEffect(() => {
     dispatch(getCartData());
+    dispatch(getWishListData());
   }, [dispatch]);
 
   useEffect(() => {
-    if (isInitial) {
-      isInitial = false;
+    if (isCartInitial) {
+      isCartInitial = false;
       return;
     }
 
@@ -30,6 +36,17 @@ const App = () => {
       dispatch(sendCartData(cart));
     }
   }, [cart, dispatch]);
+
+  useEffect(() => {
+    if (isWishInitial) {
+      isWishInitial = false;
+      return;
+    }
+
+    if (wishList.changed) {
+      dispatch(sendWishListData(wishList));
+    }
+  }, [wishList, dispatch]);
 
   return (
     <>
@@ -42,7 +59,8 @@ const App = () => {
       )}
       <Header />
       {showCart && <Cart />}
-      <ProductsList />
+      {showWishList && <WishList />}
+      <ProductsList wishList={wishList} />
     </>
   );
 };

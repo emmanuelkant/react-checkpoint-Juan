@@ -1,51 +1,32 @@
 import Product from "./Product";
 import "./ProductsList.scss";
 import useFetchPLP from "../Hooks/useFetchPLP";
+import { Items, TApiResponse } from "../../Models/types";
 
-const ProductsList = () => {
-  // const [products, setProducts] = useState<ListItems[]>([]);
+const ProductsList: React.FC<any> = (props) => {
+  const products: TApiResponse = useFetchPLP(
+    "https://fakestoreapi.com/products?limit=6"
+  );
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch("https://fakestoreapi.com/products?limit=6");
-  //     if (!response.ok) {
-  //       throw new Error("Something went wrong :(");
-  //     }
-
-  //     const responseData = await response.json();
-
-  //     const productsList: Items[] = [];
-
-  //     for (const key in responseData) {
-  //       productsList.push({
-  //         id: key,
-  //         title: responseData[key].title,
-  //         image: responseData[key].image,
-  //         price: responseData[key].price,
-  //         quantity: 0,
-  //         totalPrice: 0,
-  //       });
-  //     }
-
-  //     setProducts(productsList);
-  //   };
-  //   fetchData();
-  // }, []);
-
-  const products = useFetchPLP("https://fakestoreapi.com/products?limit=6");
+  const [wishId] = props.wishList.items.map((wish: any) => wish.id);
 
   return (
     <>
+      {products.loading && <p>Loading...</p>}
+      {products.error && <p>Something went wrong ⛔️</p>}
       <div className="plp-container">
-        {products?.map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            image={product.image}
-            title={product.title}
-            price={product.price}
-          />
-        ))}
+        {!products.loading &&
+          products.data?.map((product: any) => (
+            <Product
+              key={product.id}
+              id={product.id}
+              image={product.image}
+              title={product.title}
+              price={product.price}
+              isWish={product.isWish}
+              isWished={product.id === wishId ? true : false}
+            />
+          ))}
       </div>
     </>
   );
