@@ -1,7 +1,10 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../Hooks/redux-hooks";
 import { wishActions } from "../../store/wishList-slice";
+import { uiActions } from "../../store/ui-slice";
 import WishListItem from "./WishListItem";
+import Modal from "../UI/Modal";
+import Button from "../UI/Button";
 import { Items } from "../../Models/types";
 
 const WishList: React.FC = () => {
@@ -12,8 +15,12 @@ const WishList: React.FC = () => {
     dispatch(wishActions.clearWishList());
   };
 
+  const toggleWishHandler = () => {
+    dispatch(uiActions.toggleWish());
+  };
+
   return (
-    <>
+    <Modal onClose={toggleWishHandler}>
       <h2>Your Shopping WishList</h2>
       {wishItems.length > 0 ? (
         <ul>
@@ -36,7 +43,8 @@ const WishList: React.FC = () => {
       ) : (
         <p>Your wish list is empty</p>
       )}
-    </>
+      <Button onClick={toggleWishHandler} title={"Close"}></Button>
+    </Modal>
   );
 };
 

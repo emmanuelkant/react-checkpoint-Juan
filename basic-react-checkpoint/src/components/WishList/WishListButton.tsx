@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../Hooks/redux-hooks";
 import { uiActions } from "../../store/ui-slice";
+import Button from "../UI/Button";
 
 const WishListButton = () => {
   const dispatch = useAppDispatch();
@@ -10,10 +11,11 @@ const WishListButton = () => {
   };
 
   return (
-    <button onClick={toggleWishHandler}>
-      <span>My Wish List</span>
-      <span>{wishQuantity}</span>
-    </button>
+    <Button
+      onClick={toggleWishHandler}
+      quantity={wishQuantity}
+      title={"Wish List"}
+    />
   );
 };
 

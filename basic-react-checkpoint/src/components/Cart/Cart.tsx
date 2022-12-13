@@ -1,6 +1,9 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
+import { uiActions } from "../../store/ui-slice";
+import Modal from "../UI/Modal";
+import Button from "../UI/Button";
 import CartItem from "./CartItem";
 import { Items } from "../../Models/types";
 
@@ -12,8 +15,12 @@ const Cart: React.FC = () => {
     dispatch(cartActions.clearCart());
   };
 
+  const toggleCartHandler = () => {
+    dispatch(uiActions.toggle());
+  };
+
   return (
-    <>
+    <Modal onClose={toggleCartHandler}>
       <h2>Your Shopping Cart</h2>
       {cartItems.length > 0 ? (
         <ul>
@@ -35,7 +42,8 @@ const Cart: React.FC = () => {
       ) : (
         <p>Your cart is empty</p>
       )}
-    </>
+      <Button onClick={toggleCartHandler} title={"Close"}></Button>
+    </Modal>
   );
 };
 

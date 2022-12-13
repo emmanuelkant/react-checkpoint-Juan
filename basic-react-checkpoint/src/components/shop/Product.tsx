@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
+import Button from "../UI/Button";
 import "./Product.scss";
 import { ListItems } from "../../Models/types";
 import { wishActions } from "../../store/wishList-slice";
@@ -9,7 +10,7 @@ const Product: React.FC<any> = (props) => {
   const dispatch = useAppDispatch();
 
   const { id, title, price, image, isWished } = props;
-  console.log(isWished);
+
   const addToCartHandler = () => {
     dispatch(
       cartActions.addItemToCart({
@@ -44,19 +45,24 @@ const Product: React.FC<any> = (props) => {
 
   return (
     <div className="product">
-      <img src={image} alt="" className="product-image" />
-      <h3>{title}</h3>
-      <p>Price €{price}</p>
-      <div className="product-button">
-        <button onClick={addToCartHandler}>Add to Cart</button>
-      </div>
-      <div className="product-button">
-        {!isWished && (
-          <button onClick={addWishHandler}>Add to wish list</button>
-        )}
-        {isWished && (
-          <button onClick={removeWishHandler}>Remove from wish list</button>
-        )}
+      <img src={image} alt={title} className="product__image" />
+      <h3 className="product__title">{title}</h3>
+      <p className="product__price">Price €{price}</p>
+      <div className="product__actions">
+        <div className="product__actions--button">
+          <Button onClick={addToCartHandler} title={"Add to Cart"} />
+        </div>
+        <div className="product__actions--button">
+          {!isWished && (
+            <Button onClick={addWishHandler} title={"Add to wish list"} />
+          )}
+          {isWished && (
+            <Button
+              onClick={removeWishHandler}
+              title={"Remove from wish list"}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

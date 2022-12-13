@@ -48,6 +48,9 @@ const App = () => {
     }
   }, [wishList, dispatch]);
 
+  console.log(showCart);
+  console.log(showWishList);
+
   return (
     <>
       {notification && (
