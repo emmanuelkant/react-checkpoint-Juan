@@ -13,10 +13,10 @@ const Notification: React.FC<any> = (props) => {
   const cssClasses = `${"notification"} ${specialClasses}`;
 
   return (
-    <section className={cssClasses}>
+    <div className={cssClasses}>
       <h2>{props.title}</h2>
       <p>{props.message}</p>
-    </section>
+    </div>
   );
 };
 

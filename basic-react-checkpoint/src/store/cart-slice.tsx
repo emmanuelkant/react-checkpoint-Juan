@@ -36,7 +36,7 @@ const cartSlice = createSlice({
           quantity: 1,
           totalPrice: newItem.price,
           image: newItem.image,
-          isWish: newItem.isWish,
+          isWished: newItem.isWished,
         });
       } else {
         existingItem.quantity!++;
@@ -58,7 +58,9 @@ const cartSlice = createSlice({
     },
 
     clearCart(state) {
-      return (state = initialState);
+      state.totalQuantity = 0;
+      state.changed = true;
+      state.items = [];
     },
   },
 });

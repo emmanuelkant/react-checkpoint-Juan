@@ -1,12 +1,12 @@
 import { useAppSelector, useAppDispatch } from "./components/Hooks/redux-hooks";
-import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Notification from "./components/UI/Notification";
 import ProductsList from "./components/Shop/ProductsList";
+import Popup from "./components/UI/Popup";
 import { useEffect } from "react";
 import { getCartData, sendCartData } from "./store/cart-actions";
-import WishList from "./components/WishList/WishList";
 import { getWishListData, sendWishListData } from "./store/wishList-actions";
+import { uiActions } from "./store/ui-slice";
 
 let isCartInitial = true;
 let isWishInitial = true;
@@ -45,24 +45,30 @@ const App = () => {
 
     if (wishList.changed) {
       dispatch(sendWishListData(wishList));
+      const timer = setTimeout(() => {
+        dispatch(uiActions.clearNotification());
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+      };
     }
   }, [wishList, dispatch]);
 
-  console.log(showCart);
-  console.log(showWishList);
-
   return (
     <>
-      {notification && (
-        <Notification
-          status={notification.status}
-          title={notification.title}
-          message={notification.message}
-        />
-      )}
       <Header />
-      {showCart && <Cart />}
-      {showWishList && <WishList />}
+      <section className="notification-section">
+        {notification && (
+          <Notification
+            status={notification.status}
+            title={notification.title}
+            message={notification.message}
+          />
+        )}
+      </section>
+      {showCart && <Popup />}
+      {showWishList && <Popup />}
       <ProductsList wishList={wishList} />
     </>
   );

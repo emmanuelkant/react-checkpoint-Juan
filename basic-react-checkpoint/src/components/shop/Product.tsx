@@ -3,7 +3,6 @@ import { useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
 import Button from "../UI/Button";
 import "./Product.scss";
-import { ListItems } from "../../Models/types";
 import { wishActions } from "../../store/wishList-slice";
 
 const Product: React.FC<any> = (props) => {
@@ -11,32 +10,22 @@ const Product: React.FC<any> = (props) => {
 
   const { id, title, price, image, isWished } = props;
 
+  const itemObj = {
+    id,
+    title,
+    price,
+    image,
+    quantity: 1,
+    totalPrice: price,
+    isWished,
+  };
+
   const addToCartHandler = () => {
-    dispatch(
-      cartActions.addItemToCart({
-        id,
-        title,
-        price,
-        image,
-        quantity: 1,
-        totalPrice: price,
-        isWish: false,
-      })
-    );
+    dispatch(cartActions.addItemToCart(itemObj));
   };
 
   const addWishHandler = () => {
-    dispatch(
-      wishActions.addToWishList({
-        id,
-        title,
-        price,
-        image,
-        quantity: 1,
-        totalPrice: price,
-        isWish: true,
-      })
-    );
+    dispatch(wishActions.addToWishList(itemObj));
   };
 
   const removeWishHandler = () => {

@@ -1,5 +1,5 @@
-import CartButton from "../Cart/CartButton";
-import WishListButton from "../WishList/WishListButton";
+import CartButton from "./CartButton";
+import WishListButton from "./WishListButton";
 import "./Header.scss";
 
 const Header = () => {

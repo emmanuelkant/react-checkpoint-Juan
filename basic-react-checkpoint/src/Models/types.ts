@@ -5,7 +5,7 @@ export type Items = {
   price: number;
   quantity: number;
   totalPrice: number;
-  isWish: boolean;
+  isWished: boolean;
 };
 
 export type ListItems = {
@@ -13,7 +13,7 @@ export type ListItems = {
   image: string;
   title: string;
   price: number;
-  isWish: boolean;
+  isWished: boolean;
 };
 
 export type CartItems = {
@@ -38,7 +38,7 @@ export type WishItems = {
   totalPrice: number;
   totalQuantity: number;
   changed: boolean;
-  isWish: boolean;
+  isWished: boolean;
 };
 
 export type Notif = {

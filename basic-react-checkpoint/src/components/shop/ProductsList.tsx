@@ -7,8 +7,7 @@ const ProductsList: React.FC<any> = (props) => {
   const products: TApiResponse = useFetchPLP(
     "https://fakestoreapi.com/products?limit=6"
   );
-
-  const [wishId] = props.wishList.items.map((wish: any) => wish.id);
+  const wishId = props.wishList.items.map((wish: any) => wish.id);
 
   return (
     <>
@@ -23,8 +22,7 @@ const ProductsList: React.FC<any> = (props) => {
               image={product.image}
               title={product.title}
               price={product.price}
-              isWish={product.isWish}
-              isWished={product.id === wishId ? true : false}
+              isWished={wishId.includes(product.id) && true}
             />
           ))}
       </div>

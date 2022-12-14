@@ -19,7 +19,7 @@ const Button: React.FC<any> = (props) => {
         </span>
       )}
       <span className="button__title">{props.title}</span>
-      {props.quantity && (
+      {props.quantity > 0 && (
         <span className="button__quantity">{props.quantity}</span>
       )}
     </button>

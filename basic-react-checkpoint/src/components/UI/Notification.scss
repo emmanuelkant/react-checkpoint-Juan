@@ -1,7 +1,9 @@
-.notification {
-  width: 100%;
+.notification-section {
   height: 3rem;
-  background-color: #1a8ed1;
+}
+
+.notification {
+  background-color: #0e4f4b;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 10%;
@@ -20,5 +22,5 @@
 }
 
 .success {
-  background-color: #1ad1b9;
+  background-color: #ff8259;
 }

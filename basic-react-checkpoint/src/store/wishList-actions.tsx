@@ -2,48 +2,6 @@ import { WishItems } from "../Models/types";
 import { wishActions } from "./wishList-slice";
 import { uiActions } from "./ui-slice";
 
-// export const getPlpData = () => {
-//   //CHANGE TYPES! and add a const for url... (maybe CartItems type?)
-//   return async (dispatch: any) => {
-//     const getData = async () => {
-//       const response = await fetch("https://fakestoreapi.com/products?limit=6");
-
-//       if (!response.ok) {
-//         throw new Error("Could not fetch cart data!");
-//       }
-
-//       const data = await response.json();
-//       return data;
-//     };
-
-//     try {
-//       const responseData = await getData();
-//       const productsList: Items[] = [];
-
-//       for (const key in responseData) {
-//         productsList.push({
-//           id: key,
-//           title: responseData[key].title,
-//           image: responseData[key].image,
-//           price: responseData[key].price,
-//           quantity: 0,
-//           totalPrice: 0,
-//           isWish: responseData[key].isWish,
-//         });
-//       }
-//       return productsList;
-//     } catch (error) {
-//       dispatch(
-//         uiActions.showNotification({
-//           status: "error",
-//           title: "Error!",
-//           message: "Fetching Products data failed",
-//         })
-//       );
-//     }
-//   };
-// };
-
 export const getWishListData = () => {
   //CHANGE TYPES! and add a const for url... (maybe CartItems type?)
   return async (dispatch: any) => {
@@ -87,7 +45,7 @@ export const sendWishListData = (wish: WishItems) => {
       uiActions.showNotification({
         status: "pending",
         title: "Sending...",
-        message: "Sending cart data",
+        message: "Sending wish list data",
       })
     );
 
