@@ -1,20 +1,18 @@
 import { uiActions } from "./ui-slice";
 import { cartActions } from "./cart-slice";
-import { CartItems } from "../Models/types";
+import { CartItems, Items } from "../Models/types";
+import { CART_URL } from "../Models/config";
+import axios from "axios";
 
 export const getCartData = () => {
   //CHANGE TYPES! and add a const for url... (maybe CartItems type?)
   return async (dispatch: any) => {
     const getData = async () => {
-      const response = await fetch(
-        "https://shop-cart-162e6-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
-      );
+      const data = await axios.get(CART_URL);
 
-      if (!response.ok) {
+      if (data.statusText !== "OK") {
         throw new Error("Could not fetch cart data!");
       }
-
-      const data = await response.json();
       return data;
     };
 
@@ -22,8 +20,8 @@ export const getCartData = () => {
       const cartData = await getData();
       dispatch(
         cartActions.replaceCart({
-          items: cartData.items || [],
-          totalQuantity: cartData.totalQuantity,
+          items: cartData.data.items || [],
+          totalQuantity: cartData.data.totalQuantity,
         })
       );
     } catch (error) {
@@ -50,18 +48,12 @@ export const sendCartData = (cart: CartItems) => {
     );
 
     const sendRequest = async () => {
-      const response = await fetch(
-        "https://shop-cart-162e6-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            items: cart.items,
-            totalQuantity: cart.totalQuantity,
-          }),
-        }
-      );
+      const response = await axios.put(CART_URL, {
+        items: cart.items,
+        totalQuantity: cart.totalQuantity,
+      });
 
-      if (!response.ok) {
+      if (response.statusText !== "OK") {
         throw new Error("Sending cart data failed.");
       }
     };

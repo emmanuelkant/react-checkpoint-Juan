@@ -1,20 +1,18 @@
 import { WishItems } from "../Models/types";
 import { wishActions } from "./wishList-slice";
 import { uiActions } from "./ui-slice";
+import { WISH_URL } from "../Models/config";
+import axios from "axios";
 
 export const getWishListData = () => {
   //CHANGE TYPES! and add a const for url... (maybe CartItems type?)
   return async (dispatch: any) => {
     const getData = async () => {
-      const response = await fetch(
-        "https://shop-cart-162e6-default-rtdb.europe-west1.firebasedatabase.app/wishList.json"
-      );
+      const data = await axios.get(WISH_URL);
 
-      if (!response.ok) {
+      if (data.statusText !== "OK") {
         throw new Error("Could not fetch wish list data!");
       }
-
-      const data = await response.json();
       return data;
     };
 
@@ -22,8 +20,8 @@ export const getWishListData = () => {
       const wishData = await getData();
       dispatch(
         wishActions.replaceWishList({
-          items: wishData.items || [],
-          totalQuantity: wishData.totalQuantity,
+          items: wishData.data.items || [],
+          totalQuantity: wishData.data.totalQuantity,
         })
       );
     } catch (error) {
@@ -50,18 +48,12 @@ export const sendWishListData = (wish: WishItems) => {
     );
 
     const sendWishRequest = async () => {
-      const response = await fetch(
-        "https://shop-cart-162e6-default-rtdb.europe-west1.firebasedatabase.app/wishList.json",
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            items: wish.items,
-            totalQuantity: wish.totalQuantity,
-          }),
-        }
-      );
+      const response = await axios.put(WISH_URL, {
+        items: wish.items,
+        totalQuantity: wish.totalQuantity,
+      });
 
-      if (!response.ok) {
+      if (response.statusText !== "OK") {
         throw new Error("Sending wish list data failed.");
       }
     };

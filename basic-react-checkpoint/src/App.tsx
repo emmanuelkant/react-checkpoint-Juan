@@ -34,6 +34,13 @@ const App = () => {
 
     if (cart.changed) {
       dispatch(sendCartData(cart));
+      const timer = setTimeout(() => {
+        dispatch(uiActions.clearNotification());
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+      };
     }
   }, [cart, dispatch]);
 

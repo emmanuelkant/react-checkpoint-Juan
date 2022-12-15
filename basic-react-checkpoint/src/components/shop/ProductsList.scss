@@ -5,3 +5,23 @@
   gap: 1rem;
   margin: 0.5rem;
 }
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  background: #0e4f4b;
+  color: #fff;
+
+  & p,
+  &__filter {
+    padding: 0.4rem 1rem;
+  }
+
+  & select {
+    appearance: none;
+  }
+
+  & label {
+    margin-right: 0.2rem;
+  }
+}

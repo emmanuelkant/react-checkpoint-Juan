@@ -20,11 +20,6 @@ const PopupItem: React.FC<{
   const { id, title, quantity, total, price, image } = props.item;
 
   const showCart = useAppSelector((state) => state.ui.showCart);
-  const showWishList = useAppSelector((state) => state.ui.showWishList);
-
-  const actions = showCart ? cartActions : wishActions;
-
-  console.log(actions);
 
   const removeItems = showCart
     ? cartActions.removeItemFromCart
