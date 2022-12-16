@@ -39,16 +39,19 @@ const Product: React.FC<any> = (props) => {
       <p className="product__price">Price €{price}</p>
       <div className="product__actions">
         <div className="product__actions--button">
-          <Button onClick={addToCartHandler} title={"Add to Cart"} />
+          <Button
+            onClick={addToCartHandler}
+            title={"Cart"}
+            action={"Add cart"}
+          />
         </div>
         <div className="product__actions--button">
-          {!isWished && (
-            <Button onClick={addWishHandler} title={"Add to wish list"} />
-          )}
+          {!isWished && <Button onClick={addWishHandler} title={"Wish List"} />}
           {isWished && (
             <Button
               onClick={removeWishHandler}
-              title={"Remove from wish list"}
+              title={"Wish List"}
+              action={"Remove wish"}
             />
           )}
         </div>

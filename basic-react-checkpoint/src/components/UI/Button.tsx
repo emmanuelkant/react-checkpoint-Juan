@@ -18,7 +18,10 @@ const Button: React.FC<any> = (props) => {
           <WishIcon />
         </span>
       )}
-      <span className="button__title">{props.title}</span>
+      {props.title === "Close" && (
+        <span className="button__title">{props.title}</span>
+      )}
+      {props.action === "Add cart" && <span>+</span>}
       {props.quantity > 0 && (
         <span className="button__quantity">{props.quantity}</span>
       )}

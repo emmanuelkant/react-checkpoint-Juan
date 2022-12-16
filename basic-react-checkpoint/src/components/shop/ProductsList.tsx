@@ -10,13 +10,12 @@ const ProductsList: React.FC<any> = (props) => {
   const [urlChanged, setUrlChanged] = useState<boolean>(false);
   const wishId = props.wishList.items.map((wish: any) => wish.id);
 
-  const handleCat = (e: any) => {
+  const handleCategory = (e: any) => {
     e.preventDefault();
     setCategory(e.target.value);
     setUrlChanged(true);
   };
   const products: TApiResponse = useFetchPLP(PLP_URL);
-  console.log(typeof category);
 
   const plpData =
     !urlChanged || category === "All"
@@ -42,7 +41,7 @@ const ProductsList: React.FC<any> = (props) => {
         {category !== "All" && <p>{category.toUpperCase()}</p>}
         <div className="categories__filter">
           <label htmlFor="category">Filters</label>
-          <select name="category" id="category" onChange={handleCat}>
+          <select name="category" id="category" onChange={handleCategory}>
             <option value="All">All categories</option>
             <option value="men's clothing">Men's Clothing</option>
             <option value="women's clothing">Women's clothing</option>
