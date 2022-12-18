@@ -1,0 +1,31 @@
+.popup-title {
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.bg-blue {
+  background: #007fff;
+}
+
+.bg-red {
+  background: #d52802;
+}
+
+.total {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5rem 0;
+
+  & button {
+    padding: 0.8rem 0.5rem;
+    color: #fff;
+    border-radius: 10px;
+  }
+}
+
+.empty-message {
+  text-align: center;
+  padding: 0.5rem 0;
+}

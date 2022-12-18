@@ -44,25 +44,31 @@ const PopupItem: React.FC<{
   };
 
   return (
-    <li>
-      <header>
-        <img src={image} alt={title} className="item-img" />
-        <h3>{title}</h3>
-        <div>
-          ${total.toFixed(2)} <span>(${price}/item)</span>
-        </div>
+    <li className="item">
+      <header className="item__header">
+        <img src={image} alt={title} className="item__header-img" />
+        <p className="item__header-title">{title}</p>
       </header>
-      <div>
-        {quantity > 1 && (
+      <main className="item__main">
+        <div className="item__main-amount">
+          {showCart && (
+            <div>
+              x <span>{quantity}</span>
+            </div>
+          )}
           <div>
-            x <span>{quantity}</span>
+            ${total.toFixed(2)} {showCart && <span>(${price}/item)</span>}
           </div>
-        )}
-        <div>
-          <button onClick={removeItemHandler}>-</button>
-          <button onClick={addItemHandler}>+</button>
         </div>
-      </div>
+        <div className="item__main-actions">
+          <button onClick={removeItemHandler}>
+            Remove {quantity > 1 ? "x1" : ""}
+          </button>
+          <button onClick={addItemHandler}>
+            {showCart ? "Add +" : "Add to Cart +"}
+          </button>
+        </div>
+      </main>
     </li>
   );
 };

@@ -1,3 +1,4 @@
+import Modal from "./Modal";
 import "./Notification.scss";
 
 const Notification: React.FC<any> = (props) => {
@@ -13,10 +14,12 @@ const Notification: React.FC<any> = (props) => {
   const cssClasses = `${"notification"} ${specialClasses}`;
 
   return (
-    <div className={cssClasses}>
-      <h2>{props.title}</h2>
-      <p>{props.message}</p>
-    </div>
+    <Modal>
+      <div className={cssClasses}>
+        <h2>{props.title}</h2>
+        <p>{props.message}</p>
+      </div>
+    </Modal>
   );
 };
 

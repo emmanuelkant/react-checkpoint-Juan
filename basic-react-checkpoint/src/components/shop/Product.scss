@@ -31,7 +31,7 @@ $color-grey: grey;
   &__actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    //flex-direction: column;
+    width: 100%;
     background: #121409;
 
     &--button {

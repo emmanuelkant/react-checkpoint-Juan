@@ -1,4 +1,5 @@
 import React from "react";
+import "./Popup.scss";
 import { useAppSelector, useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
 import { uiActions } from "../../store/ui-slice";
@@ -12,8 +13,16 @@ const Popup: React.FC = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
   const wishItems = useAppSelector((state) => state.wish.items);
-
   const showCart = useAppSelector((state) => state.ui.showCart);
+
+  let amount: any = [];
+  cartItems.map((item) => amount.push(item.totalPrice));
+  const totalAmount: number = amount.reduce(
+    (curNumber: number, totalItem: number) => {
+      return curNumber + totalItem;
+    },
+    0
+  );
 
   const popupItems = showCart ? cartItems : wishItems;
 
@@ -38,9 +47,11 @@ const Popup: React.FC = () => {
         dispatch(uiActions.toggleWish());
       };
 
+  const classColor = showCart ? "bg-blue" : "bg-red";
+
   return (
     <Modal onClose={toggleHandler}>
-      <h2>{popupTitle}</h2>
+      <h2 className={`popup-title ${classColor}`}>{popupTitle}</h2>
       {popupItems.length > 0 ? (
         <ul>
           {popupItems.map((item: Items) => (
@@ -57,12 +68,17 @@ const Popup: React.FC = () => {
               }}
             />
           ))}
-          <button onClick={clearHandler}>CLEAR ALL</button>
+          <div className="total">
+            {showCart && <p>Total: €{totalAmount.toFixed(2)}</p>}
+            <button onClick={clearHandler} className="bg-blue">
+              Clear all
+            </button>
+          </div>
         </ul>
       ) : (
-        <p>{emptyMessage}</p>
+        <p className="empty-message">{emptyMessage}</p>
       )}
-      <Button onClick={toggleHandler} title={"Close"} />
+      <Button onClick={toggleHandler} title={"Close"} classes={"button"} />
     </Modal>
   );
 };

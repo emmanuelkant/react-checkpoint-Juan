@@ -4,6 +4,7 @@ import useFetchPLP from "../Hooks/useFetchPLP";
 import { Items, TApiResponse } from "../../Models/types";
 import { PLP_URL } from "../../Models/config";
 import { useState } from "react";
+import { Filter } from "../../assets/IconsSvg";
 
 const ProductsList: React.FC<any> = (props) => {
   const [category, setCategory] = useState<string>("");
@@ -38,9 +39,11 @@ const ProductsList: React.FC<any> = (props) => {
       {products.loading && <p>Loading...</p>}
       {products.error && <p>Something went wrong ⛔️</p>}
       <div className="categories">
-        {category !== "All" && <p>{category.toUpperCase()}</p>}
+        {category !== "All" ? <p>{category.toUpperCase()}</p> : <p></p>}
         <div className="categories__filter">
-          <label htmlFor="category">Filters</label>
+          <label htmlFor="category">
+            Filters <Filter />
+          </label>
           <select name="category" id="category" onChange={handleCategory}>
             <option value="All">All categories</option>
             <option value="men's clothing">Men's Clothing</option>

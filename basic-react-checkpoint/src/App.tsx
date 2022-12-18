@@ -65,15 +65,13 @@ const App = () => {
   return (
     <>
       <Header />
-      <section className="notification-section">
-        {notification && (
-          <Notification
-            status={notification.status}
-            title={notification.title}
-            message={notification.message}
-          />
-        )}
-      </section>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
       {showCart && <Popup />}
       {showWishList && <Popup />}
       <ProductsList wishList={wishList} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
 import Button from "../UI/Button";
@@ -43,15 +43,26 @@ const Product: React.FC<any> = (props) => {
             onClick={addToCartHandler}
             title={"Cart"}
             action={"Add cart"}
+            classes={"button"}
+            classIcon={"icon"}
           />
         </div>
         <div className="product__actions--button">
-          {!isWished && <Button onClick={addWishHandler} title={"Wish List"} />}
+          {!isWished && (
+            <Button
+              onClick={addWishHandler}
+              title={"Wish List"}
+              classes={"button"}
+              classIcon={"icon-big"}
+            />
+          )}
           {isWished && (
             <Button
               onClick={removeWishHandler}
               title={"Wish List"}
               action={"Remove wish"}
+              classes={"button"}
+              classIcon={"icon icon-red"}
             />
           )}
         </div>

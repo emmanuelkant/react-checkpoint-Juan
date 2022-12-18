@@ -3,18 +3,20 @@ import { CartIcon, WishIcon } from "../../assets/IconsSvg";
 import "./Button.scss";
 
 const Button: React.FC<any> = (props) => {
-  const buttonColor =
-    props.title === "Remove from wish list" ? "orange" : "green";
+  const heartIcon = props.quantity === 0 ? "icon-big" : "icon";
+  const heartColor =
+    props.quantity > 0 ? `${props.classIcon} icon-red` : props.classIcon;
+  const cartIcon = props.quantity > 0 ? props.classIcon : "icon-big";
 
   return (
-    <button onClick={props.onClick} className={`button button__${buttonColor}`}>
+    <button onClick={props.onClick} className={props.classes}>
       {props.title === "Cart" && (
-        <span className="icon">
+        <span className={`${cartIcon}  `}>
           <CartIcon />
         </span>
       )}
       {props.title === "Wish List" && (
-        <span className="icon">
+        <span className={`${heartColor} ${heartIcon}`}>
           <WishIcon />
         </span>
       )}

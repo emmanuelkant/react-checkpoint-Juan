@@ -1,14 +1,10 @@
-.notification-section {
-  height: 3rem;
-}
-
 .notification {
-  background-color: #0e4f4b;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 10%;
   align-items: center;
   color: white;
+  gap: 2rem;
 }
 
 .notification h2,
@@ -22,5 +18,5 @@
 }
 
 .success {
-  background-color: #ff8259;
+  background-color: #007fff;
 }

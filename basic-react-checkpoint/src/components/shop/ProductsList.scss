@@ -7,14 +7,22 @@
 }
 
 .categories {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  //justify-content: space-between;
+  grid-template-columns: 2fr 3fr;
+  align-items: center;
+  height: 3.5rem;
   background: #0e4f4b;
   color: #fff;
 
   & p,
   &__filter {
     padding: 0.4rem 1rem;
+
+    & label svg {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
   }
 
   & select {
@@ -22,6 +30,6 @@
   }
 
   & label {
-    margin-right: 0.2rem;
+    margin-right: 0.3rem;
   }
 }
