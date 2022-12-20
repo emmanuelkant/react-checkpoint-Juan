@@ -1,4 +1,4 @@
-# react-checkpoint-Juan-
+# react-checkpoint-Juan
 
 This is a full responsive e-commerce webpage, it makes REST calls to 3 different end points. One call from the "fakestore" API and the rest from a firebase database.
 <br/>
