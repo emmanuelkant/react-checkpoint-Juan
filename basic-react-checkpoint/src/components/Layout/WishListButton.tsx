@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../Hooks/redux-hooks";
 import { uiActions } from "../../store/ui-slice";
 import Button from "../UI/Button";
-import { wishActions } from "../../store/wishList-slice";
 import { useState, useEffect } from "react";
 
 const WishListButton = () => {
@@ -33,6 +32,7 @@ const WishListButton = () => {
       title={"Wish List"}
       classes={buttonClasses}
       classIcon={iconClass}
+      action={""}
     />
   );
 };

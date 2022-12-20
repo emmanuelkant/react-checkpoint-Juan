@@ -14,6 +14,16 @@ export type ListItems = {
   title: string;
   price: number;
   isWished: boolean;
+  category: string;
+};
+
+export type BtnPropsType = {
+  quantity: number | string;
+  title: string;
+  onClick: () => void;
+  classes: string;
+  classIcon: string;
+  action: string;
 };
 
 export type CartItems = {
@@ -50,17 +60,6 @@ export type Notif = {
 export type ShortCartItem = {
   items: Items[];
   totalQuantity: number;
-};
-
-export type ItemProps = {
-  id: string;
-  title: string;
-  image: string;
-  quantity: number;
-  total: number;
-  price: number;
-  onRemoveItem: () => void;
-  onAddItem: () => void;
 };
 
 export type TApiResponse = {

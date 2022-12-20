@@ -5,8 +5,7 @@ import { WISH_URL } from "../Models/config";
 import axios from "axios";
 
 export const getWishListData = () => {
-  //CHANGE TYPES! and add a const for url... (maybe CartItems type?)
-  return async (dispatch: any) => {
+  return async (dispatch: Function) => {
     const getData = async () => {
       const data = await axios.get(WISH_URL);
 
@@ -36,9 +35,8 @@ export const getWishListData = () => {
   };
 };
 
-//CHANGE TYPES!
 export const sendWishListData = (wish: WishItems) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Function) => {
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -60,12 +58,11 @@ export const sendWishListData = (wish: WishItems) => {
 
     try {
       await sendWishRequest();
-      // CHANGE MESSAGES!
       dispatch(
         uiActions.showNotification({
           status: "success",
           title: "Success!",
-          message: "Sent wish list data successfully!",
+          message: "Wish list updated!",
         })
       );
     } catch (error) {

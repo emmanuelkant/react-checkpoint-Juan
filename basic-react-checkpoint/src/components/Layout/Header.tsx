@@ -1,18 +1,20 @@
+import { Shop } from "../../assets/IconsSvg";
 import CartButton from "./CartButton";
 import WishListButton from "./WishListButton";
-import "./Header.scss";
 
 const Header = () => {
   return (
     <header className="header">
-      <h1 className="header__title">React Shop</h1>
+      <h1 className="header__title">
+        <Shop /> React Shop
+      </h1>
       <nav className="header__nav">
         <ul className="header__ul">
           <li>
-            <CartButton />
+            <CartButton aria-expanded="false" />
           </li>
           <li>
-            <WishListButton />
+            <WishListButton aria-expanded="false" />
           </li>
         </ul>
       </nav>

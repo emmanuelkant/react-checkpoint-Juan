@@ -1,5 +1,4 @@
 import React from "react";
-import "./Popup.scss";
 import { useAppSelector, useAppDispatch } from "../Hooks/redux-hooks";
 import { cartActions } from "../../store/cart-slice";
 import { uiActions } from "../../store/ui-slice";
@@ -15,7 +14,7 @@ const Popup: React.FC = () => {
   const wishItems = useAppSelector((state) => state.wish.items);
   const showCart = useAppSelector((state) => state.ui.showCart);
 
-  let amount: any = [];
+  let amount: number[] = [];
   cartItems.map((item) => amount.push(item.totalPrice));
   const totalAmount: number = amount.reduce(
     (curNumber: number, totalItem: number) => {
@@ -78,7 +77,14 @@ const Popup: React.FC = () => {
       ) : (
         <p className="empty-message">{emptyMessage}</p>
       )}
-      <Button onClick={toggleHandler} title={"Close"} classes={"button"} />
+      <Button
+        onClick={toggleHandler}
+        title={"Close"}
+        classes={"button button-hover"}
+        quantity={""}
+        classIcon={""}
+        action={""}
+      />
     </Modal>
   );
 };

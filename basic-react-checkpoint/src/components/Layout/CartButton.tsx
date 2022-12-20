@@ -32,6 +32,7 @@ const CartButton = () => {
       title={"Cart"}
       classes={buttonClasses}
       classIcon={iconClass}
+      action={""}
     />
   );
 };

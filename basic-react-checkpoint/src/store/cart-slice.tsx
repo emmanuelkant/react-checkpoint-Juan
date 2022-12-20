@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItems, Items, ShortCartItem } from "../Models/types";
+import { Items, ShortCartItem } from "../Models/types";
 
 export type InitialState = {
   items: Items[];
@@ -17,7 +17,6 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    //CHANGE TYPES!
     replaceCart(state, action: PayloadAction<ShortCartItem>) {
       state.totalQuantity = action.payload.totalQuantity;
       state.items = action.payload.items;

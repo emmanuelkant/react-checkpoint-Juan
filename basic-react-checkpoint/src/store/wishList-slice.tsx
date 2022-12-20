@@ -29,8 +29,6 @@ const wishListSlice = createSlice({
     addToWishList(state, action: PayloadAction<Items>) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
-      //newItem.isWished = true;
-      //state.isWished = true;
 
       if (!existingItem) {
         state.totalQuantity++;

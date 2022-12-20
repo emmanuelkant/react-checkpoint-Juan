@@ -1,8 +1,8 @@
 import React from "react";
 import { CartIcon, WishIcon } from "../../assets/IconsSvg";
-import "./Button.scss";
+import { BtnPropsType } from "../../Models/types";
 
-const Button: React.FC<any> = (props) => {
+const Button: React.FC<BtnPropsType> = (props) => {
   const heartIcon = props.quantity === 0 ? "icon-big" : "icon";
   const heartColor =
     props.quantity > 0 ? `${props.classIcon} icon-red` : props.classIcon;

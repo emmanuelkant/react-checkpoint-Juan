@@ -23,6 +23,15 @@
     color: #fff;
     border-radius: 10px;
   }
+  & button:hover {
+    @include respond(tab-land) {
+      background-color: #e2e2e2;
+      color: #007fff;
+      font-weight: bold;
+      border: 2px solid #007fff;
+      cursor: pointer;
+    }
+  }
 }
 
 .empty-message {

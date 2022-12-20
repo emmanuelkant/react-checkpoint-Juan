@@ -4,10 +4,8 @@
   margin-bottom: 1rem;
 
   &__header {
-    display: flex;
-    flex-direction: column;
+    @include flexCol;
     justify-content: center;
-    align-items: center;
 
     &-title {
       color: #fff;
@@ -42,6 +40,13 @@
       background: #121409;
       border: none;
       padding: 0.5rem 0;
+    }
+
+    &-actions button:hover,
+    &-actions button:focus {
+      color: #121409;
+      background: #e2e2e2;
+      cursor: pointer;
     }
   }
 }

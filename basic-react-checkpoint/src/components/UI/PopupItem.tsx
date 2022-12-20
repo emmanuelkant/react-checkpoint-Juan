@@ -2,7 +2,6 @@ import React from "react";
 import { cartActions } from "../../store/cart-slice";
 import { wishActions } from "../../store/wishList-slice";
 import { useAppDispatch, useAppSelector } from "../Hooks/redux-hooks";
-import "./PopupItem.scss";
 
 const PopupItem: React.FC<{
   item: {
@@ -47,7 +46,7 @@ const PopupItem: React.FC<{
     <li className="item">
       <header className="item__header">
         <img src={image} alt={title} className="item__header-img" />
-        <p className="item__header-title">{title}</p>
+        <figcaption className="item__header-title">{title}</figcaption>
       </header>
       <main className="item__main">
         <div className="item__main-amount">

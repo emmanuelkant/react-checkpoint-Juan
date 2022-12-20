@@ -1,4 +1,5 @@
 import { useAppSelector, useAppDispatch } from "./components/Hooks/redux-hooks";
+import "./sass/main.scss";
 import Header from "./components/Layout/Header";
 import Notification from "./components/UI/Notification";
 import ProductsList from "./components/Shop/ProductsList";
@@ -15,7 +16,6 @@ const App = () => {
   const dispatch = useAppDispatch();
   const showCart = useAppSelector((state) => state.ui.showCart);
   const showWishList = useAppSelector((state) => state.ui.showWishList);
-  //CHANGE TYPES!
   const cart: any = useAppSelector((state) => state.cart);
   const wishList: any = useAppSelector((state) => state.wish);
 
@@ -66,11 +66,13 @@ const App = () => {
     <>
       <Header />
       {notification && (
-        <Notification
-          status={notification.status}
-          title={notification.title}
-          message={notification.message}
-        />
+        <section className="notification-section">
+          <Notification
+            status={notification.status}
+            title={notification.title}
+            message={notification.message}
+          />
+        </section>
       )}
       {showCart && <Popup />}
       {showWishList && <Popup />}

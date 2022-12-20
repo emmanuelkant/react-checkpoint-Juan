@@ -1,12 +1,11 @@
 import { uiActions } from "./ui-slice";
 import { cartActions } from "./cart-slice";
-import { CartItems, Items } from "../Models/types";
+import { CartItems } from "../Models/types";
 import { CART_URL } from "../Models/config";
 import axios from "axios";
 
 export const getCartData = () => {
-  //CHANGE TYPES! and add a const for url... (maybe CartItems type?)
-  return async (dispatch: any) => {
+  return async (dispatch: Function) => {
     const getData = async () => {
       const data = await axios.get(CART_URL);
 
@@ -36,9 +35,8 @@ export const getCartData = () => {
   };
 };
 
-//CHANGE TYPES!
 export const sendCartData = (cart: CartItems) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Function) => {
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -60,12 +58,11 @@ export const sendCartData = (cart: CartItems) => {
 
     try {
       await sendRequest();
-      // CHANGE MESSAGES!
       dispatch(
         uiActions.showNotification({
           status: "success",
           title: "Success!",
-          message: "Sent cart data successfully!",
+          message: "Added to your cart!",
         })
       );
     } catch (error) {

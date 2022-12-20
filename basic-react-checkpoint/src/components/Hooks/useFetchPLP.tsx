@@ -6,7 +6,7 @@ import axios from "axios";
 export const useFetchPLP = (url: string): TApiResponse => {
   const [status, setStatus] = useState<Number>(0);
   const [statusText, setStatusText] = useState<String>("");
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<string>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
 
