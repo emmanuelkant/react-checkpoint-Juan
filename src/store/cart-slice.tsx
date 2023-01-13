@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Items, ShortCartItem } from "../Models/types";
 
-export type InitialState = {
+export type InitialState = { // Should be CartState
   items: Items[];
   totalQuantity: number;
   changed: boolean;
@@ -10,7 +10,7 @@ export type InitialState = {
 const initialState: InitialState = {
   items: [],
   totalQuantity: 0,
-  changed: false,
+  changed: false, // We already discussed that you don't need this
 };
 
 const cartSlice = createSlice({

@@ -10,7 +10,7 @@ const Product: React.FC<ListItems> = (props) => {
 
   const { id, title, price, image, isWished } = props;
 
-  const itemObj = {
+  const itemObj = { // You don't need put "Obj" to identify it as an object, let the content speeks for it self. Just "item" or "data" or "productData" is enough
     id,
     title,
     price,
@@ -20,15 +20,15 @@ const Product: React.FC<ListItems> = (props) => {
     isWished,
   };
 
-  const addToCartHandler = () => {
+  const addToCartHandler = () => { // I like that you separate the function in another function. That let's your JSX clean and easy to read. Good one.
     dispatch(cartActions.addItemToCart(itemObj));
   };
 
-  const addWishHandler = () => {
+  const addWishHandler = () => { // Good
     dispatch(wishActions.addToWishList(itemObj));
   };
 
-  const removeWishHandler = () => {
+  const removeWishHandler = () => { // Fantastic
     dispatch(wishActions.removeFromWishList(id));
   };
 
@@ -37,7 +37,7 @@ const Product: React.FC<ListItems> = (props) => {
     : "remove item from wish list";
 
   return (
-    <article className="product">
+    <article className="product"> {/* Good use of the tags */}
       <img src={image} alt={title} className="product__image" />
       <div className="description">
         <h3 className="product__title">{title}</h3>
@@ -56,7 +56,7 @@ const Product: React.FC<ListItems> = (props) => {
               quantity={""}
             />
           </div>
-          <div className="product__actions--button" aria-label={wishAria}>
+          <div className="product__actions--button" aria-label={wishAria}> {/* Accessibility! Always, ALWAYS FANTASTIC! But I think this should be on button it self. */}
             {!isWished && (
               <Button
                 onClick={addWishHandler}

@@ -3,7 +3,7 @@ import { uiActions } from "../../store/ui-slice";
 import Button from "../UI/Button";
 import { useState, useEffect } from "react";
 
-const WishListButton = () => {
+const WishListButton = () => { // The same comments of CartButton. That makes me think, could this component be a generic component? 
   const dispatch = useAppDispatch();
   const wishQuantity = useAppSelector((state) => state.wish.totalQuantity);
   const [btnWishAnimation, setBtnWishAnimation] = useState<boolean>(false);

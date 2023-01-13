@@ -15,7 +15,7 @@ const ModalOverlay: React.FC<{ children: any }> = (props) => {
 
 const portalElement = document.getElementById("overlays") as HTMLDivElement;
 
-const Modal: React.FC<{ onClose: () => void; children: any }> = (props) => {
+const Modal: React.FC<{ onClose: () => void; children: any }> = (props) => { // That modal is good, and this is a real reusable component, very good. Generally, resuable components does one single thing.
   return (
     <>
       {ReactDOM.createPortal(

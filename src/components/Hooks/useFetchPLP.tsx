@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps */ // Use this in all file is bad, try to use this just in the place it is needed
 import { useEffect, useState } from "react";
 import { TApiResponse } from "../../Models/types";
 import axios from "axios";

@@ -2,7 +2,7 @@ import { Shop } from "../../assets/IconsSvg";
 import CartButton from "./CartButton";
 import WishListButton from "./WishListButton";
 
-const Header = () => {
+const Header = () => { // Really nice component, simple, clean and stright forward.
   return (
     <header className="header">
       <h1 className="header__title">

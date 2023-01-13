@@ -10,7 +10,8 @@ const Notification: React.FC<Notif> = (props) => {
     specialClasses = "success";
   }
 
-  const cssClasses = `${"notification"} ${specialClasses}`;
+  const cssClasses = `${"notification"} ${specialClasses}`; // Take advantage of the names you are using. If the value of the variable is the name of your class so use it directly. You don't need to check it values and then change another variable, just use your variable
+  // Like this -> const cssClasses = `${"notification"} ${props.status}`;
 
   return (
     <div className={cssClasses}>

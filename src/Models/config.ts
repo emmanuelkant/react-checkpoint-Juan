@@ -1,3 +1,5 @@
+//Well done in separate URL files
+
 export const PLP_URL = "https://fakestoreapi.com/products";
 
 export const CART_URL =

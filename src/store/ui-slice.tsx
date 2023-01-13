@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Notif } from "../Models/types";
 
-type InitialState = {
+type InitialState = { // The name should no be this. It should have the name of your slice, it should be UiState. Then you can import it easily if you need.
   showCart: boolean;
   showWishList: boolean;
   notification: null | Notif;
@@ -17,7 +17,7 @@ const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    toggle(state) {
+    toggle(state) { // This state is your "ui" state so you can type it easyly with state: InitialState
       state.showCart = !state.showCart;
     },
     toggleWish(state) {

@@ -20,7 +20,7 @@ const PopupItem: React.FC<{
 
   const showCart = useAppSelector((state) => state.ui.showCart);
 
-  const removeItems = showCart
+  const removeItems = showCart // The same here, if this function was received form props this will be easier. You don't even need to get nothing from the reduce. 
     ? cartActions.removeItemFromCart
     : wishActions.removeFromWishList;
 
@@ -44,11 +44,11 @@ const PopupItem: React.FC<{
 
   return (
     <li className="item">
-      <header className="item__header">
+      <header className="item__header"> {/* Well use of the tags */}
         <img src={image} alt={title} className="item__header-img" />
-        <figcaption className="item__header-title">{title}</figcaption>
+        <figcaption className="item__header-title">{title}</figcaption> {/* VERY WELL use of the tags */}
       </header>
-      <main className="item__main">
+      <main className="item__main"> {/* Now here is not so very well hahaha. The website should have only one main tag, generally right bellow the body  */}
         <div className="item__main-amount">
           {showCart && (
             <div>
@@ -61,10 +61,10 @@ const PopupItem: React.FC<{
         </div>
         <div className="item__main-actions">
           <button onClick={removeItemHandler}>
-            Remove {quantity > 1 ? "x1" : ""}
+            Remove {quantity > 1 ? "x1" : ""} {/* You could store this in a variable like you did in PopUp. The variable could be removeButtonText */}
           </button>
           <button onClick={addItemHandler}>
-            {showCart ? "Add +" : "Add to Cart +"}
+            {showCart ? "Add +" : "Add to Cart +"} {/* The same here. The variable could be addButtonText */}
           </button>
         </div>
       </main>

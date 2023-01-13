@@ -12,7 +12,7 @@ const initialState: WishInitialState = {
   items: [],
   totalQuantity: 0,
   isWished: false,
-  changed: false,
+  changed: false, // We already discussed that you don't need this
 };
 
 const wishListSlice = createSlice({
@@ -31,8 +31,8 @@ const wishListSlice = createSlice({
       const existingItem = state.items.find((item) => item.id === newItem.id);
 
       if (!existingItem) {
-        state.totalQuantity++;
-        state.items.push({
+        state.totalQuantity++; // I think you know but you are only free for doing this ++ because you are using Redux and uses anothe module that allows you doing this. In every other case, avoid mutate your variables, we need always copy their values and create a new reference. You are still changing your variables, and you should, like I said to do, but in the right way. 
+        state.items.push({ // Like this, you are doing this push here just beacuse you are inside Redux reducer, if not, always create new references, in that case for example, [...itens, newItem] 
           id: newItem.id,
           price: newItem.price,
           title: newItem.title,
@@ -51,7 +51,7 @@ const wishListSlice = createSlice({
       if (existingItem) {
         state.totalQuantity--;
         state.isWished = false;
-        state.items = state.items.filter((item) => item.id !== id);
+        state.items = state.items.filter((item) => item.id !== id); // I can see that you know how to use array methods. That is awesome, try to not use Lodash or jQuery, if current javascript we don't need those libraries anymore.
       }
       state.changed = true;
     },

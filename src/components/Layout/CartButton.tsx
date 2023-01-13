@@ -9,21 +9,21 @@ const CartButton = () => {
   const [btnCartAnimation, setBtnCartAnimation] = useState<boolean>(false);
 
   useEffect(() => {
-    if (cartQuantity + 1) setBtnCartAnimation(true);
+    if (cartQuantity + 1) setBtnCartAnimation(true); // This is kinda confusing to understand. I think you are checking if the cartQuantity is a positive number but I think you could just using "cartQuantity > 0".
     const timer = setTimeout(() => {
       setBtnCartAnimation(false);
     }, 700);
-    return () => {
+    return () => { // Nice cleanup, but again, I think we can change that for a CSS animation in the future.
       clearTimeout(timer);
     };
   }, [cartQuantity]);
 
-  const toggleCartHandler = () => {
+  const toggleCartHandler = () => { // Good function name
     dispatch(uiActions.toggle());
   };
 
-  const buttonClasses = cartQuantity > 0 ? "button-has-item" : "button";
-  const iconClass = btnCartAnimation ? "icon bump" : "icon";
+  const buttonClasses = cartQuantity > 0 ? "button-has-item" : "button"; // Good logical naming
+  const iconClass = btnCartAnimation ? "icon bump" : "icon"; // Good logical naming
 
   return (
     <Button

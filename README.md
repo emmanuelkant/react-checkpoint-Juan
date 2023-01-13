@@ -1,3 +1,5 @@
+Well done in documenting this. We tend to forgot it, but it is extremelly important.
+
 # react-checkpoint-Juan
 
 This is a full responsive e-commerce webpage, it makes REST calls to 3 different end points. One call from the "fakestore" API and the rest from a firebase database.
